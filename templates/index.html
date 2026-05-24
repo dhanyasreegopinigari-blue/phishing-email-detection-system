@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Email Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">PhishGuard</div>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="card">
+            <h1>Phishing Email Detection</h1>
+            <p class="subtitle">Paste an email below and click <strong>Analyze</strong> to check if it's phishing.</p>
+
+            <label for="emailInput" class="sr">Email content</label>
+            <textarea id="emailInput" placeholder="Paste full email content or body here... (subject, links, sender)" aria-label="Email content"></textarea>
+
+            <div class="controls">
+                <button id="analyzeBtn">Analyze</button>
+                <button id="exampleBtn" class="outline">Load Example</button>
+            </div>
+
+            <div id="resultCard" class="result-card hidden">
+                <div id="resultIcon" class="result-icon">🔍</div>
+                <div class="result-body">
+                    <div id="resultText" class="result-text">Waiting for analysis...</div>
+                    <div class="confidence">
+                        <div class="confidence-bar-bg">
+                            <div id="confidenceBar" class="confidence-bar" style="width:0%"></div>
+                        </div>
+                        <div id="confidenceLabel" class="confidence-label">0%</div>
+                    </div>
+                    <div id="errorMsg" class="error-msg"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="card muted">
+            <h2>How it works</h2>
+            <p>This tool uses a TF-IDF + Naive Bayes model to classify emails as <strong>Phishing</strong> or <strong>Safe</strong>. Use the trainer (`train_model.py`) to retrain the model with your dataset.</p>
+        </section>
+    </main>
+
+    <div id="spinner" class="spinner hidden" aria-hidden="true"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

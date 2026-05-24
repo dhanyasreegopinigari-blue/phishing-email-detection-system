@@ -1,0 +1,11 @@
+text,label
+"Your bank account has been suspended. Click here to verify immediately http://fakebank.com",phishing
+"Congratulations! You won a lottery. Claim now.",phishing
+"Update your password urgently using this link.",phishing
+"Your Amazon account needs verification.",phishing
+"Meeting scheduled tomorrow at 10 AM.",safe
+"Please find the attached report.",safe
+"Let's have lunch tomorrow.",safe
+"Project submission deadline extended.",safe
+"Verify your PayPal account now!",phishing
+"Happy Birthday! Have a wonderful day.",safe
