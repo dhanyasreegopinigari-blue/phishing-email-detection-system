@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 import joblib
 import re
+import os
+import threading
+import webbrowser
+import time
 
 app = Flask(__name__)
 
@@ -62,5 +66,21 @@ def predict():
 
 
 if __name__ == "__main__":
-    print("Starting Flask app on http://127.0.0.1:5000")
+    url = "http://127.0.0.1:5000"
+
+    def _open_browser_after_delay():
+        # small delay to allow server to start
+        time.sleep(1)
+        try:
+            webbrowser.open(url)
+        except Exception as e:
+            print(f"Could not open browser: {e}")
+
+    # When Flask debug mode with reloader is ON, the child process sets
+    # WERKZEUG_RUN_MAIN='true'. Open browser only once from the child.
+    run_main = os.environ.get("WERKZEUG_RUN_MAIN")
+    if run_main == "true" or run_main is None:
+        threading.Thread(target=_open_browser_after_delay, daemon=True).start()
+
+    print(f"Starting Flask app on {url}")
     app.run(host="127.0.0.1", port=5000, debug=True)
