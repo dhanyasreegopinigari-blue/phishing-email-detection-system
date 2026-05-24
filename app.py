@@ -66,21 +66,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    url = "http://127.0.0.1:5000"
-
-    def _open_browser_after_delay():
-        # small delay to allow server to start
-        time.sleep(1)
-        try:
-            webbrowser.open(url)
-        except Exception as e:
-            print(f"Could not open browser: {e}")
-
-    # When Flask debug mode with reloader is ON, the child process sets
-    # WERKZEUG_RUN_MAIN='true'. Open browser only once from the child.
-    run_main = os.environ.get("WERKZEUG_RUN_MAIN")
-    if run_main == "true" or run_main is None:
-        threading.Thread(target=_open_browser_after_delay, daemon=True).start()
-
-    print(f"Starting Flask app on {url}")
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
