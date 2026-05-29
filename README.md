@@ -18,7 +18,11 @@ This project demonstrates practical implementation of:
 - Model deployment integration
 
 ---
+## Screenshots✨
+[Dashboard]
+<img width="540" height="1321" alt="phishing email detection image" src="https://github.com/user-attachments/assets/016e554b-7396-496a-8e7e-f1a7eb4532f8" />
 
+---
 ## 🚀 Features
 - Detect phishing emails
 - TF-IDF text processing
